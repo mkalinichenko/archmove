@@ -277,21 +277,57 @@ input, button {
 .gallery-img {
     position: relative;
     margin-left: 4rem;
+    overflow:hidden;
 }
 
-.gallery-img::before  {
-    content: '';
+.img-descr {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    transition: .4s;
+    left:0;
+    bottom:0;
+    right:0;
+    top:0;
+    visibility:hidden;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    text-align: center;
+    transition: .5s ease-in-out;
 }
 
+.gallery-img:hover .img-descr{
+    background-color: rgba(0, 0, 0, 0.5);
+    visibility: visible;
+}
+
+.gallery-img::after,
+.gallery-img::before {
+    content: "";
+    position: absolute;
+    transition: all 0.4s ease-out;
+    top: 3rem;
+    bottom: 3rem;
+    left: 3rem;
+    right: 3rem;
+}
+.gallery-img::before {
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: scale(0, 1);
+    z-index: 3;
+}
+.gallery-img::after {
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    transform: scale(1, 0);
+}
 .gallery-img:hover::before {
-    background-color: rgba(0, 0, 0, 0.4);
+    transform: scale(1.05, 1);
+}
+.gallery-img:hover::after {
+    transform: scale(1, 1.05);
 }
 
 /* About */
